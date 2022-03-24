@@ -7,6 +7,8 @@ export (int) var maxRotSpeed; # Maximum rotation speed
 export (int) var accRateOfChange; # Rate at which linear acceleration increases
 export (int) var maxSpeed; # Maximum linear speed
 
+export (int) var playerNumber; # Player ID
+
 # Declare member variables here.
 var velVec = Vector2(); # Velocity Vector
 var accVec = Vector2(); # Acceleration Vector
@@ -43,11 +45,11 @@ func _physics_process(delta):
 	
 # Handles all input. Called every frame in _physics_process
 func getMovementInput():
-	if (Input.is_action_pressed("ui_left")):
+	if (Input.is_action_pressed("ui_left" + str(playerNumber))):
 		rotVel -= rotAcc;
-	if (Input.is_action_pressed("ui_right")):
+	if (Input.is_action_pressed("ui_right" + str(playerNumber))):
 		rotVel += rotAcc;
-	if (Input.is_action_pressed("ui_up")):
+	if (Input.is_action_pressed("ui_up" + str(playerNumber))):
 		accVec.x = cos(rotation)
 		accVec.y = sin(rotation)
 		
@@ -65,7 +67,7 @@ func dampenRotation():
 # Dampens the linear velocity. Called when not pressing up
 func dampenVelocity():
 	# Only dampen the velocity if not pressing up. Otherwise, small enough velocities will be completely cancelled out
-	if (Input.is_action_pressed("ui_up")):
+	if (Input.is_action_pressed("ui_up" + str(playerNumber))):
 		return;
 	
 	# If making VelVec's x approach zero by the velDampConstant would make it switch signs, then just set it to zero
