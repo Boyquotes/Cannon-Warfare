@@ -6,6 +6,3 @@
 
 [node name="PlayerShip" parent="." instance=ExtResource( 1 )]
 position = Vector2( 397, 264 )
-rotDamp = 0.03
-rotAcc = 0.1
-maxRotSpeed = 2

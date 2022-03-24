@@ -13,11 +13,17 @@ animations = [ {
 
 [node name="PlayerShip" type="KinematicBody2D"]
 script = ExtResource( 2 )
-rotDamp = 1
-rotAcc = 5
+rotDampConstant = 0.03
+rotAcc = 0.1
+velDampConstant = 1.0
+maxRotSpeed = 2
+accRateOfChange = 5
+maxSpeed = 200
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = 1.5708
 frames = SubResource( 1 )
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
 polygon = PoolVector2Array( -16, -4, -16, 32, 16, 32, 16, -4, 0, -32 )

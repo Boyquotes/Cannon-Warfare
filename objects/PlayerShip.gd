@@ -1,8 +1,11 @@
 extends KinematicBody2D
 
-export (float) var rotDamp; # Dampening constant of the rotation
+export (float) var rotDampConstant; # Dampening constant of the rotation
 export (float) var rotAcc; # Angular Acceleration
+export (float) var velDampConstant; # Dampening constant of the linear velocity
 export (int) var maxRotSpeed; # Maximum rotation speed
+export (int) var accRateOfChange; # Rate at which linear acceleration increases
+export (int) var maxSpeed; # Maximum linear speed
 
 # Declare member variables here.
 var velVec = Vector2(); # Velocity Vector
@@ -15,9 +18,11 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	accVec = Vector2();
+	
 	getMovementInput();
 	
-	# Ensure rotation velocity magnitude doesn't exceed maximum speed
+	# Ensure angular velocity doesn't exceed maximum speed
 	if (abs(rotVel) > maxRotSpeed):
 		if (rotVel < 0):
 			rotVel = maxRotSpeed * -1;
@@ -26,25 +31,55 @@ func _physics_process(delta):
 			
 	# Update rotation
 	rotation += rotVel * delta;
-	dampenRotation();
 	
-# Called every frame in _physics_process. Handles all input
+	# Update, normalize, and apply velocity
+	velVec += accVec;
+	if (velVec.length() > maxSpeed):
+		velVec = velVec.normalized() * maxSpeed;
+	velVec = move_and_slide(velVec);
+	
+	dampenRotation();
+	dampenVelocity();
+	
+# Handles all input. Called every frame in _physics_process
 func getMovementInput():
 	if (Input.is_action_pressed("ui_left")):
 		rotVel -= rotAcc;
 	if (Input.is_action_pressed("ui_right")):
 		rotVel += rotAcc;
-	if Input.is_action_pressed("ui_up"):
-		velVec.x += 1
+	if (Input.is_action_pressed("ui_up")):
+		accVec.x = cos(rotation)
+		accVec.y = sin(rotation)
 		
-# Called every frame in _physics_process. Dampens the angular velocity
+		accVec = accVec.normalized() * accRateOfChange;
+		
+# Dampens the angular velocity. Called every frame in _physics_process
 func dampenRotation():
-	if (abs(rotVel - rotDamp) < rotDamp):
+	# If making rotVel approach zero by the rotDampConstant would make it switch signs, then just set it to zero
+	if (abs(rotVel - rotDampConstant) < rotDampConstant):
 		rotVel = 0
 		return;
 	elif (rotVel > 0):
-		rotVel -= rotDamp;
+		rotVel -= rotDampConstant;
 		return;
 	elif (rotVel < 0):
-		rotVel += rotDamp;
+		rotVel += rotDampConstant;
 		return;
+		
+# Dampens the linear velocity. Called when not pressing up
+func dampenVelocity():
+	# Only dampen the velocity if not pressing up. Otherwise, small enough velocities will be completely cancelled out
+	if (Input.is_action_pressed("ui_up")):
+		return;
+	
+	# If making VelVec's x approach zero by the velDampConstant would make it switch signs, then just set it to zero
+	if (abs(velVec.x - velDampConstant) < velDampConstant):
+		velVec.x = 0;
+	else:
+		velVec.x -= sign(velVec.x) * velDampConstant
+		
+	# If making VelVec's y approach zero by the velDampConstant would make it switch signs, then just set it to zero
+	if (abs(velVec.y - velDampConstant) < velDampConstant):
+		velVec.y = 0;
+	else:
+		velVec.y -= sign(velVec.y) * velDampConstant
