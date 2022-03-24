@@ -59,12 +59,8 @@ func dampenRotation():
 	if (abs(rotVel - rotDampConstant) < rotDampConstant):
 		rotVel = 0
 		return;
-	elif (rotVel > 0):
-		rotVel -= rotDampConstant;
-		return;
-	elif (rotVel < 0):
-		rotVel += rotDampConstant;
-		return;
+	else:
+		rotVel -= sign(rotVel) * rotDampConstant;
 		
 # Dampens the linear velocity. Called when not pressing up
 func dampenVelocity():
