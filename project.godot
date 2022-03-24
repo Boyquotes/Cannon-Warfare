@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Ship Project"
+run/main_scene="res://rooms/ArenaRoom.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
