@@ -25,6 +25,7 @@ velDampConstant = 1.0
 maxRotSpeed = 2
 accRateOfChange = 5
 maxSpeed = 200
+health = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 1.5708
