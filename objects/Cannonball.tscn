@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/cannonBall1.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/cannonBall2.png" type="Texture" id=2]
+[ext_resource path="res://objects/Cannonball.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "cannonball2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "cannonball1",
+"speed": 5.0
+} ]
+
+[node name="Cannonball" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "cannonball2"
+
+[connection signal="body_entered" from="." to="." method="_on_Cannonball_body_entered"]
