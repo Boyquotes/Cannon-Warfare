@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/sprites/ship1.png" type="Texture" id=1]
 [ext_resource path="res://objects/PlayerShip.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/ship2.png" type="Texture" id=3]
+[ext_resource path="res://objects/Cannonball.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -19,6 +20,7 @@ animations = [ {
 
 [node name="PlayerShip" type="KinematicBody2D"]
 script = ExtResource( 2 )
+Cannonball = ExtResource( 4 )
 rotDampConstant = 0.03
 rotAcc = 0.1
 velDampConstant = 1.0
@@ -35,3 +37,5 @@ animation = "player2Default"
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
 polygon = PoolVector2Array( -16, -4, -16, 32, 16, 32, 16, -4, 0, -32 )
+
+[node name="BulletHolder" type="Node" parent="."]

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+export (PackedScene) var Cannonball
+
 ## Constants
 # Movement constants
 export (float) var rotDampConstant; # Dampening constant of the rotation
@@ -56,6 +58,8 @@ func _physics_process(delta):
 	
 # Handles all input. Called every frame in _physics_process
 func getMovementInput():
+	print(health)
+	# Movement
 	if (Input.is_action_pressed("ui_left" + str(playerNumber))):
 		rotVel -= rotAcc;
 	if (Input.is_action_pressed("ui_right" + str(playerNumber))):
@@ -65,6 +69,23 @@ func getMovementInput():
 		accVec.y = sin(rotation)
 		
 		accVec = accVec.normalized() * accRateOfChange;
+		
+	# Shooting
+	if (Input.is_action_just_pressed("ui_shoot" + str(playerNumber))):
+		# Create first cannonball (aiming left), give position and angle
+		var cannonball0 = Cannonball.instance();
+		cannonball0.position = self.position;
+		cannonball0.init(playerNumber, rotation - PI/2)
+	
+		# Create second cannonball (aiming right), give position and angle
+		var cannonball1 = Cannonball.instance();
+		cannonball1.position = self.position;
+		cannonball1.init(playerNumber, rotation + PI/2)
+		
+		# Add as a child to the cannonballHolder child node. If we just add it as a child of the Player node, then it'll move weird
+		# when the Player node moves due to how child transform is handled
+		$BulletHolder.add_child(cannonball0);
+		$BulletHolder.add_child(cannonball1);
 		
 # Dampens the angular velocity. Called every frame in _physics_process
 func dampenRotation():
