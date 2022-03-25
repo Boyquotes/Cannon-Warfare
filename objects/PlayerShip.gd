@@ -58,7 +58,6 @@ func _physics_process(delta):
 	
 # Handles all input. Called every frame in _physics_process
 func getMovementInput():
-	print(health)
 	# Movement
 	if (Input.is_action_pressed("ui_left" + str(playerNumber))):
 		rotVel -= rotAcc;
