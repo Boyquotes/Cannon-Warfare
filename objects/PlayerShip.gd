@@ -10,6 +10,7 @@ export (float) var velDampConstant; # Dampening constant of the linear velocity
 export (int) var maxRotSpeed; # Maximum rotation speed
 export (int) var accRateOfChange; # Rate at which linear acceleration increases
 export (int) var maxSpeed; # Maximum linear speed
+export (float) var knockbackMultiplier; # Multiplier for the knockback vector. Must be greater than 1 to offset the velocity before the collision
 
 # Other constants
 export (int) var health; # HP of the player, number set in inspector is starting health
@@ -36,6 +37,7 @@ func _physics_process(delta):
 	accVec = Vector2();
 	
 	getMovementInput();
+	print(str(velVec.length()))
 	
 	# Ensure angular velocity doesn't exceed maximum speed
 	if (abs(rotVel) > maxRotSpeed):
@@ -51,8 +53,22 @@ func _physics_process(delta):
 	velVec += accVec;
 	if (velVec.length() > maxSpeed):
 		velVec = velVec.normalized() * maxSpeed;
-	velVec = move_and_slide(velVec);
+
+	var collision = move_and_collide(velVec * delta);
+	# If collided with a BODY, then apply knockback to self
+	if collision:
+		var pointOfCollision = collision.get_position();
+		
+		# If the other object was also a boat, then call its hitByOtherShip method (applies knockback to other ship due to own velocity)
+		if (collision.get_collider().has_method("hitByOtherShip")):
+			collision.get_collider().hitByOtherShip(velVec)
+		
+		# Declare knockback vector. Points from collision to self, multiplied by velocity magnitude and multiplier
+		var knockbackVector = (self.position - pointOfCollision).normalized() * velVec.length() * knockbackMultiplier;
+		velVec.x += knockbackVector.x
+		velVec.y += knockbackVector.y
 	
+	# Dampening
 	dampenRotation();
 	dampenVelocity();
 	
@@ -112,3 +128,8 @@ func dampenVelocity():
 		velVec.y = 0;
 	else:
 		velVec.y -= sign(velVec.y) * velDampConstant
+		
+# Applies knockback due to other ship when colliding with other ship. Called when this ship is hit by another ship
+func hitByOtherShip(otherVelVec):
+	velVec.x += otherVelVec.x;
+	velVec.y += otherVelVec.y;
