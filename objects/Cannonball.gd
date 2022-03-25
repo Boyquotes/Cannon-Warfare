@@ -23,3 +23,5 @@ func _on_Cannonball_body_entered(body):
 	if (body in players && body.playerNumber != parentNumber):
 		body.health -= 1
 		queue_free()
+	if (not body in players):
+		queue_free()
