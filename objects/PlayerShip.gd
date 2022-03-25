@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+## Constants
+# Movement constants
 export (float) var rotDampConstant; # Dampening constant of the rotation
 export (float) var rotAcc; # Angular Acceleration
 export (float) var velDampConstant; # Dampening constant of the linear velocity
@@ -7,6 +9,8 @@ export (int) var maxRotSpeed; # Maximum rotation speed
 export (int) var accRateOfChange; # Rate at which linear acceleration increases
 export (int) var maxSpeed; # Maximum linear speed
 
+# Other constants
+export (int) var health; # HP of the player, number set in inspector is starting health
 export (int) var playerNumber; # Player ID
 
 # Declare member variables here.
@@ -20,6 +24,10 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	# Kill player if health reaches 0
+	if (health < 0):
+		queue_free()
+	
 	accVec = Vector2();
 	
 	getMovementInput();
