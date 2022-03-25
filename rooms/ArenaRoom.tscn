@@ -4,15 +4,17 @@
 
 [node name="ArenaRoom" type="Node"]
 
-[node name="PlayerShip" parent="." instance=ExtResource( 1 )]
+[node name="RoomManager" type="Node" parent="."]
+
+[node name="PlayerShip" parent="RoomManager" instance=ExtResource( 1 )]
 position = Vector2( 261, 180 )
 playerNumber = 1
 
-[node name="PlayerShip2" parent="." instance=ExtResource( 1 )]
+[node name="PlayerShip2" parent="RoomManager" instance=ExtResource( 1 )]
 position = Vector2( 193, 58 )
 playerNumber = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="RoomManager"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 0
