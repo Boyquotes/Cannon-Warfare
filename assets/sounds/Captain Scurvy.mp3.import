@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Captain Scurvy.mp3-7423d941bed574f931f2b7af6090c06f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Captain Scurvy.mp3"
+dest_files=[ "res://.import/Captain Scurvy.mp3-7423d941bed574f931f2b7af6090c06f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
