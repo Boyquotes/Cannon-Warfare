@@ -14,7 +14,7 @@ font_data = ExtResource( 3 )
 [node name="RoomManager" type="Node" parent="."]
 
 [node name="PlayerShip" parent="RoomManager" instance=ExtResource( 1 )]
-position = Vector2( 261, 180 )
+position = Vector2( 180, 330 )
 playerNumber = 1
 
 [node name="PlayerShip2" parent="RoomManager" instance=ExtResource( 1 )]
