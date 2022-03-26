@@ -28,6 +28,7 @@ animations = [ {
 } ]
 
 [node name="ShipHealthBar" type="AnimatedSprite"]
+z_index = 1
 frames = SubResource( 5 )
 frame = 3
 script = ExtResource( 2 )

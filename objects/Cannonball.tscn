@@ -21,6 +21,7 @@ animations = [ {
 } ]
 
 [node name="Cannonball" type="Area2D"]
+z_index = -1
 script = ExtResource( 3 )
 damage = 1
 
