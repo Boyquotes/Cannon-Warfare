@@ -37,7 +37,6 @@ func _physics_process(delta):
 	accVec = Vector2();
 	
 	getMovementInput();
-	print(str(velVec.length()))
 	
 	# Ensure angular velocity doesn't exceed maximum speed
 	if (abs(rotVel) > maxRotSpeed):
@@ -87,21 +86,34 @@ func getMovementInput():
 		
 	# Shooting
 	if (Input.is_action_just_pressed("ui_shoot" + str(playerNumber))):
-		# Create first cannonball (aiming left), give position and angle
-		var cannonball0 = Cannonball.instance();
-		cannonball0.position = self.position;
-		cannonball0.init(playerNumber, rotation - PI/2)
+		shoot();
+		
+func shoot():
+	# Create first cannonball (aiming left), give position and angle
+	var cannonball0 = Cannonball.instance();
+	cannonball0.position = self.position;
+	cannonball0.init(playerNumber, rotation - PI/2)
+
+	# Create second cannonball (aiming right), give position and angle
+	var cannonball1 = Cannonball.instance();
+	cannonball1.position = self.position;
+	cannonball1.init(playerNumber, rotation + PI/2)
 	
-		# Create second cannonball (aiming right), give position and angle
-		var cannonball1 = Cannonball.instance();
-		cannonball1.position = self.position;
-		cannonball1.init(playerNumber, rotation + PI/2)
-		
-		# Add as a child to the cannonballHolder child node. If we just add it as a child of the Player node, then it'll move weird
-		# when the Player node moves due to how child transform is handled
-		$BulletHolder.add_child(cannonball0);
-		$BulletHolder.add_child(cannonball1);
-		
+	# Add as a child to the cannonballHolder child node. If we just add it as a child of the Player node, then it'll move weird
+	# when the Player node moves due to how child transform is handled
+	$BulletHolder.add_child(cannonball0);
+	$BulletHolder.add_child(cannonball1);
+
+# Applies knockback due to other ship when colliding with other ship. Called when this ship is hit by another ship
+func hitByOtherShip(otherVelVec):
+	velVec.x += otherVelVec.x;
+	velVec.y += otherVelVec.y;
+	
+# Called when the ship is meant to take damage
+func takeDamage(damageAmount):
+	health -= damageAmount;
+	$ShipHealthBar.frame -= damageAmount;
+	
 # Dampens the angular velocity. Called every frame in _physics_process
 func dampenRotation():
 	# If making rotVel approach zero by the rotDampConstant would make it switch signs, then just set it to zero
@@ -128,14 +140,3 @@ func dampenVelocity():
 		velVec.y = 0;
 	else:
 		velVec.y -= sign(velVec.y) * velDampConstant
-		
-# Applies knockback due to other ship when colliding with other ship. Called when this ship is hit by another ship
-func hitByOtherShip(otherVelVec):
-	velVec.x += otherVelVec.x;
-	velVec.y += otherVelVec.y;
-	
-# Called when the ship is meant to take damage
-func takeDamage(damageAmount):
-	health -= damageAmount;
-	$ShipHealthBar.frame -= damageAmount;
-	
