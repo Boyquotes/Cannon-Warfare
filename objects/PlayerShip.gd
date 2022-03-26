@@ -137,4 +137,5 @@ func hitByOtherShip(otherVelVec):
 # Called when the ship is meant to take damage
 func takeDamage(damageAmount):
 	health -= damageAmount;
+	$ShipHealthBar.frame -= damageAmount;
 	
