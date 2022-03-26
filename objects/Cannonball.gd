@@ -8,6 +8,11 @@ export (int) var damage;
 # Called to pass creator ID information
 func init(parentNumber, rot):
 	self.parentNumber = parentNumber;
+	
+	# Set sprite based on parent id
+	$AnimatedSprite.animation = "cannonball" + str(self.parentNumber);
+	
+	# Set velocity based on own rotation
 	velVec.x = cos(rot)
 	velVec.y = sin(rot)
 
