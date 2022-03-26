@@ -75,7 +75,6 @@ func _physics_process(delta):
 		var knockbackVector = ((self.position - pointOfCollision).normalized() * velVec.length() * knockbackMultiplier);
 		# If the knockback vector is still zero, then apply the base amount of knockback
 		if (knockbackVector == Vector2(0,0)):
-			print("Here")
 			knockbackVector = ((self.position - pointOfCollision).normalized() * defaultKnockback)
 		velVec.x += knockbackVector.x
 		velVec.y += knockbackVector.y
