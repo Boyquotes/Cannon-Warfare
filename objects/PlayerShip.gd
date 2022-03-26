@@ -31,7 +31,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Kill player if health reaches 0
-	if (health < 0):
+	if (health <= 0):
 		queue_free()
 	
 	accVec = Vector2();
@@ -133,3 +133,8 @@ func dampenVelocity():
 func hitByOtherShip(otherVelVec):
 	velVec.x += otherVelVec.x;
 	velVec.y += otherVelVec.y;
+	
+# Called when the ship is meant to take damage
+func takeDamage(damageAmount):
+	health -= damageAmount;
+	

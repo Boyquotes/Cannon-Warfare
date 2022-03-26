@@ -3,6 +3,8 @@ extends Area2D
 var parentNumber;
 var velVec = Vector2();
 
+export (int) var damage;
+
 # Called to pass creator ID information
 func init(parentNumber, rot):
 	self.parentNumber = parentNumber;
@@ -21,7 +23,7 @@ func _on_Cannonball_body_entered(body):
 	
 	# If we've entered a player, ensure it's not the player that made us and then do damage
 	if (body in players && body.playerNumber != parentNumber):
-		body.health -= 1
+		body.takeDamage(damage)
 		queue_free()
 	if (not body in players):
 		queue_free()
