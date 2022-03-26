@@ -4,7 +4,7 @@
 [ext_resource path="res://objects/PlayerShip.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/ship2.png" type="Texture" id=3]
 [ext_resource path="res://objects/Cannonball.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GUI/ShipHealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/GUI/ShipHealthBar.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
