@@ -11,10 +11,12 @@ export (int) var maxRotSpeed; # Maximum rotation speed
 export (int) var accRateOfChange; # Rate at which linear acceleration increases
 export (int) var maxSpeed; # Maximum linear speed
 export (float) var knockbackMultiplier; # Multiplier for the knockback vector. Must be greater than 1 to offset the velocity before the collision
+export (float) var defaultKnockback; # Smallest amount of knockback possible
 
 # Other constants
 export (int) var health; # HP of the player, number set in inspector is starting health
 export (int) var playerNumber; # Player ID
+export (int) var damageFromCollision; # Damage taken when colliding with body
 
 # Declare member variables here.
 var velVec = Vector2(); # Velocity Vector
@@ -53,17 +55,28 @@ func _physics_process(delta):
 	if (velVec.length() > maxSpeed):
 		velVec = velVec.normalized() * maxSpeed;
 
+	# Move and handle collisions
 	var collision = move_and_collide(velVec * delta);
 	# If collided with a BODY, then apply knockback to self
 	if collision:
 		var pointOfCollision = collision.get_position();
 		
-		# If the other object was also a boat, then call its hitByOtherShip method (applies knockback to other ship due to own velocity)
+		# If the body we collided with was also a boat, then call its hitByOtherShip method (applies knockback to other ship due to own velocity)
 		if (collision.get_collider().has_method("hitByOtherShip")):
 			collision.get_collider().hitByOtherShip(velVec)
+			# Do damage to the ship we hit. We only reach this if our velocity contributed to the collision, otherwise the other ship will go through this instead
+			collision.get_collider().takeDamage(damageFromCollision);
+			
+		# Do damage to self if collided with something OTHER than a boat
+		else:
+			takeDamage(damageFromCollision)
 		
 		# Declare knockback vector. Points from collision to self, multiplied by velocity magnitude and multiplier
-		var knockbackVector = (self.position - pointOfCollision).normalized() * velVec.length() * knockbackMultiplier;
+		var knockbackVector = ((self.position - pointOfCollision).normalized() * velVec.length() * knockbackMultiplier);
+		# If the knockback vector is still zero, then apply the base amount of knockback
+		if (knockbackVector == Vector2(0,0)):
+			print("Here")
+			knockbackVector = ((self.position - pointOfCollision).normalized() * defaultKnockback)
 		velVec.x += knockbackVector.x
 		velVec.y += knockbackVector.y
 	

@@ -29,7 +29,9 @@ maxRotSpeed = 1
 accRateOfChange = 1
 maxSpeed = 50
 knockbackMultiplier = 1.5
+defaultKnockback = 8.0
 health = 3
+damageFromCollision = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 1.5708
