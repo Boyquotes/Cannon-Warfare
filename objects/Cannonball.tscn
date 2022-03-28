@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 frames = SubResource( 2 )
 animation = "cannonball2"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="FireSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -8.0
 autoplay = true
