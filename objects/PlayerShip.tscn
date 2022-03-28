@@ -23,16 +23,17 @@ animations = [ {
 [node name="PlayerShip" type="KinematicBody2D"]
 script = ExtResource( 2 )
 Cannonball = ExtResource( 4 )
-rotDampConstant = 0.01
-rotAcc = 0.05
-velDampConstant = 0.2
-maxRotSpeed = 1
-accRateOfChange = 1
-maxSpeed = 50
-knockbackMultiplier = 1.5
-defaultKnockback = 8.0
+ROT_DAMP_CONSTANT = 0.01
+ROT_ACC = 0.05
+VEL_DAMP_CONSTANT = 0.2
+MAX_ROT_SPEED = 1
+ACC_RATE_OF_CHANGE = 1
+MAX_SPEED = 50
+KNOCKBACK_MULTIPLIER = 1.5
+DEFAULT_KNOCKBACK = 8.0
+DAMAGE_FROM_COLLISION = 1
+CANNON_CHARGE_MAX = 10
 health = 3
-damageFromCollision = 1
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = 1.5708
