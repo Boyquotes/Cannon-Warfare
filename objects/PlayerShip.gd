@@ -38,7 +38,7 @@ func _physics_process(delta):
 	
 	accVec = Vector2();
 	
-	getMovementInput();
+	getInput();
 	
 	# Ensure angular velocity doesn't exceed maximum speed
 	if (abs(rotVel) > maxRotSpeed):
@@ -84,7 +84,7 @@ func _physics_process(delta):
 	dampenVelocity();
 	
 # Handles all input. Called every frame in _physics_process
-func getMovementInput():
+func getInput():
 	# Movement
 	if (Input.is_action_pressed("ui_left" + str(playerNumber))):
 		rotVel -= rotAcc;
