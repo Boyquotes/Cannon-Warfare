@@ -50,3 +50,4 @@ position = Vector2( 0, -40 )
 
 [node name="DamageSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -10.0
