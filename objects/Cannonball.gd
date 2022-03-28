@@ -2,6 +2,7 @@ extends Area2D
 
 var parentNumber;
 var velVec = Vector2();
+var hitSomething = false;
 
 export (int) var damage;
 
@@ -20,15 +21,31 @@ func init(parentNumber, rot):
 func _process(delta):
 	position.x += velVec.x;
 	position.y += velVec.y;
+	# If we've hit something, and the sound is done playing, then destroy self
+	if (hitSomething):
+		if ($HitSound.playing == false):
+			queue_free();
 
 # Called when the cannonball enters a body
 func _on_Cannonball_body_entered(body):
 	# Get all players
 	var players = get_tree().get_nodes_in_group("Players");
 	
-	# If we've entered a player, ensure it's not the player that made us and then do damage
+	# If we've entered a player, ensure it's not the player that made us
 	if (body in players && body.playerNumber != parentNumber):
+		# Damage the ship
 		body.takeDamage(damage)
-		queue_free()
+		
+		# Play the hitsound and set self to invisible, if we haven't already done so
+		if (hitSomething == false):
+			$HitSound.playing = true;
+			$AnimatedSprite.visible = false;
+		
+		hitSomething = true;
 	if (not body in players):
-		queue_free()
+		# Play the hitsound and set self to invisible, if we haven't already done so
+		if (hitSomething == false):
+			$HitSound.playing = true;
+			$AnimatedSprite.visible = false;
+		
+		hitSomething = true;
