@@ -42,7 +42,7 @@ margin_right = 365.0
 margin_bottom = 526.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "\"Captain Scurvy\" Kevin MacLeod (incompetech.com)
+text = "Music: \"Captain Scurvy\" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 "
