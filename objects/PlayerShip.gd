@@ -16,7 +16,11 @@ export (float) var DEFAULT_KNOCKBACK; # Smallest amount of knockback possible
 # Other constants
 export (int) var PLAYER_NUMBER; # Player ID
 export (int) var DAMAGE_FROM_COLLISION; # Damage taken when colliding with body
-export (int) var CANNON_CHARGE_MAX; # Value at which the cannon is ready to fire
+export (int) var MAX_CANNON_CHARGE; # Value at which the cannon is ready to fire
+export (float) var CANNON_CHARGE_RATE_OF_CHANGE; # Rate at which the cannon charge changes per frame. Half of this is removed from the charge value every frame as well
+
+# GUI Identifiers
+var cannonChargeBarVerticalBuffer; # How far the charge bar is from the ship, vertically
 
 # Declare member variables here.
 export (int) var health; # HP of the player, number set in inspector is starting health
@@ -32,16 +36,28 @@ func _ready():
 	# Add self to player group
 	add_to_group("Players")
 	
+	# Initalize the CannonChargeBar
+	$CannonChargeBar.min_value = 0;
+	$CannonChargeBar.max_value = MAX_CANNON_CHARGE;
+	cannonChargeBarVerticalBuffer = 40
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Kill player if health reaches 0
 	if (health <= 0):
 		queue_free()
 	
-	# Reset the acceleration vector
+	# Reset vectors and get input
 	accVec = Vector2();
-	
 	getInput();
+	
+	# Decrease the charge value by half of the 'standard' rate of change 
+	if (cannonCharge >= 0):
+		cannonCharge -= (CANNON_CHARGE_RATE_OF_CHANGE/2)
+	# If cannonCharge is less than zero
+	else:
+		cannonCharge = 0
+	$CannonChargeBar.value = cannonCharge;
 	
 	# Ensure angular velocity doesn't exceed maximum speed
 	if (abs(rotVel) > MAX_ROT_SPEED):
@@ -86,9 +102,12 @@ func _physics_process(delta):
 	dampenRotation();
 	dampenVelocity();
 	
+	# GUI Handling
+	manageChargeBar();
+	
 # Handles all input. Called every frame in _physics_process
 func getInput():
-	# Movement
+	## Movement
 	if (Input.is_action_pressed("ui_left" + str(PLAYER_NUMBER))):
 		rotVel -= ROT_ACC;
 	if (Input.is_action_pressed("ui_right" + str(PLAYER_NUMBER))):
@@ -99,9 +118,14 @@ func getInput():
 		
 		accVec = accVec.normalized() * ACC_RATE_OF_CHANGE;
 		
-	# Shooting
-	if (Input.is_action_just_pressed("ui_shoot" + str(PLAYER_NUMBER))):
-		shoot();
+	## Shooting
+	# Increase cannon charge when holding shoot key
+	if (Input.is_action_pressed("ui_shoot" + str(PLAYER_NUMBER))):
+		cannonCharge += CANNON_CHARGE_RATE_OF_CHANGE;
+	if (Input.is_action_just_released("ui_shoot" + str(PLAYER_NUMBER))):
+		if (cannonCharge >= MAX_CANNON_CHARGE):
+			shoot();
+			cannonCharge = 0;
 		
 func shoot():
 	# Create first cannonball (aiming left), give position and angle
@@ -156,3 +180,12 @@ func dampenVelocity():
 		velVec.y = 0;
 	else:
 		velVec.y -= sign(velVec.y) * VEL_DAMP_CONSTANT
+		
+# Ensures the charge bar stays in the correct location relative to the ship. Called every frame
+func manageChargeBar():
+	# Set the relative rotation to the inverse of the ship's rotation, thus canceling each other out
+	$CannonChargeBar.set_rotation(-1*rotation)
+	# Set position to the ship's position, but slightly higher based on the vertical buffer
+	$CannonChargeBar.set_global_position(Vector2(
+		position.x - ($CannonChargeBar.get_size().x/2), # Position is based on upper left, so subtract half of the width to account for that
+		 position.y - cannonChargeBarVerticalBuffer))
