@@ -32,7 +32,7 @@ func _on_Cannonball_body_entered(body):
 	var players = get_tree().get_nodes_in_group("Players");
 	
 	# If we've entered a player, ensure it's not the player that made us
-	if (body in players && body.playerNumber != parentNumber):
+	if (body in players && body.PLAYER_NUMBER != parentNumber):
 		# Damage the ship
 		body.takeDamage(damage)
 		
