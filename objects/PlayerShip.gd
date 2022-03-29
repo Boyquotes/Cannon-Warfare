@@ -108,15 +108,32 @@ func _physics_process(delta):
 # Handles all input. Called every frame in _physics_process
 func getInput():
 	## Movement
-	if (Input.is_action_pressed("ui_left" + str(PLAYER_NUMBER))):
-		rotVel -= ROT_ACC;
-	if (Input.is_action_pressed("ui_right" + str(PLAYER_NUMBER))):
-		rotVel += ROT_ACC;
 	if (Input.is_action_pressed("ui_up" + str(PLAYER_NUMBER))):
 		accVec.x = cos(rotation)
 		accVec.y = sin(rotation)
 		
 		accVec = accVec.normalized() * ACC_RATE_OF_CHANGE;
+		
+		# Turn on water particles
+		$WaterParticlesLeft.emitting = true;
+		$WaterParticlesRight.emitting = true;
+		
+	elif (Input.is_action_just_released("ui_up" + str(PLAYER_NUMBER))):
+		# Turn off water particles
+		$WaterParticlesLeft.emitting = false;
+		$WaterParticlesRight.emitting = false;
+		
+	if (Input.is_action_pressed("ui_left" + str(PLAYER_NUMBER))):
+		rotVel -= ROT_ACC;
+		$WaterParticlesLeft.emitting = true;
+	elif (Input.is_action_just_released("ui_left" + str(PLAYER_NUMBER))):
+		$WaterParticlesLeft.emitting = false;
+		
+	if (Input.is_action_pressed("ui_right" + str(PLAYER_NUMBER))):
+		rotVel += ROT_ACC;
+		$WaterParticlesRight.emitting = true;
+	elif (Input.is_action_just_released("ui_right" + str(PLAYER_NUMBER))):
+		$WaterParticlesRight.emitting = false;
 		
 	## Shooting
 	# Increase cannon charge when holding shoot key
