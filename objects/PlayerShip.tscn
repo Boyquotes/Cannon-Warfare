@@ -107,7 +107,6 @@ health = 3
 rotation = 1.5708
 frames = SubResource( 1 )
 animation = "player2Default"
-playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708

@@ -33,6 +33,7 @@ var cannonCharge = 0; # How much the cannon is currently charged
 func _ready():
 	# Set sprite based on player id
 	$AnimatedSprite.animation = "player" + str(PLAYER_NUMBER) + "Default";
+	$AnimatedSprite.playing = true;
 	# Add self to player group
 	add_to_group("Players")
 	
