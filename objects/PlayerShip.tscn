@@ -88,7 +88,7 @@ playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
-polygon = PoolVector2Array( -16, -4, -16, 32, 16, 32, 16, -4, 0, -32 )
+polygon = PoolVector2Array( -14, -5.99995, -13.9999, 30.0001, 14.0001, 29.9999, 14, -6.00005, 0, -32 )
 
 [node name="BulletHolder" type="Node" parent="."]
 
