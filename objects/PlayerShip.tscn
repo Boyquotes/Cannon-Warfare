@@ -1,23 +1,55 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://assets/sprites/ship1.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/ship2SpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://objects/PlayerShip.gd" type="Script" id=2]
-[ext_resource path="res://assets/sprites/ship2.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/ship1SpriteSheet.png" type="Texture" id=3]
 [ext_resource path="res://objects/Cannonball.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/GUI/ShipHealthBar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/shipDamage.wav" type="AudioStream" id=6]
 
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 64 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "player2Default",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "player1Default",
-"speed": 5.0
+"speed": 1.0
 } ]
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -51,6 +83,8 @@ health = 3
 rotation = 1.5708
 frames = SubResource( 1 )
 animation = "player2Default"
+frame = 3
+playing = true
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
@@ -68,9 +102,9 @@ volume_db = -10.0
 [node name="CannonChargeBar" type="ProgressBar" parent="."]
 anchor_right = 0.5
 margin_left = -32.0
-margin_top = -5.0
+margin_top = -30.0
 margin_right = 32.0
-margin_bottom = 4.0
+margin_bottom = -21.0
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 percent_visible = false

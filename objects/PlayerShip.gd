@@ -151,8 +151,10 @@ func hitByOtherShip(otherVelVec):
 # Called when the ship is meant to take damage
 func takeDamage(damageAmount):
 	health -= damageAmount;
+	
 	$ShipHealthBar.frame -= damageAmount;
 	$DamageSound.playing = true;
+	$AnimatedSprite.speed_scale += 1;
 	
 # Dampens the angular velocity. Called every frame in _physics_process
 func dampenRotation():
