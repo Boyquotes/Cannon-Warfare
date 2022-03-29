@@ -31,6 +31,10 @@ func _on_Cannonball_body_entered(body):
 	# Get all players
 	var players = get_tree().get_nodes_in_group("Players");
 	
+	# If we're invisible, we've already hit something and are just playing the sound. Leave this function
+	if ($AnimatedSprite.visible == false):
+		return;
+	
 	# If we've entered a player, ensure it's not the player that made us
 	if (body in players && body.PLAYER_NUMBER != parentNumber):
 		# Damage the ship
