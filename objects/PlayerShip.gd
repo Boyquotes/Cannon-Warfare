@@ -29,6 +29,10 @@ var accVec = Vector2(); # Acceleration Vector
 var rotVel = 0; # Angular velocity
 var cannonCharge = 0; # How much the cannon is currently charged
 
+# Constructor
+func init(playerNumber):
+	self.PLAYER_NUMBER = playerNumber
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Set sprite based on player id
