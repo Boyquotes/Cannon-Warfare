@@ -8,7 +8,7 @@ export (float) var ROT_DAMP_CONSTANT; # Dampening constant of the rotation
 export (float) var ROT_ACC; # Angular Acceleration
 export (float) var VEL_DAMP_CONSTANT; # Dampening constant of the linear velocity
 export (int) var MAX_ROT_SPEED; # Maximum rotation speed
-export (int) var ACC_RATE_OF_CHANGE; # Rate at which linear acceleration increases
+export (float) var ACC_MAG; # Magnitude of accleration vector
 export (int) var MAX_SPEED; # Maximum linear speed
 export (float) var KNOCKBACK_MULTIPLIER; # Multiplier for the knockback vector. Must be greater than 1 to offset the velocity before the collision
 export (float) var DEFAULT_KNOCKBACK; # Smallest amount of knockback possible
@@ -133,7 +133,7 @@ func getInput():
 		accVec.x = cos(rotation)
 		accVec.y = sin(rotation)
 		
-		accVec = accVec.normalized() * ACC_RATE_OF_CHANGE;
+		accVec = accVec.normalized() * ACC_MAG;
 		
 		# Turn on water particles
 		$WaterParticlesLeft.emitting = true;
@@ -148,7 +148,7 @@ func getInput():
 		accVec.x = -cos(rotation)
 		accVec.y = -sin(rotation)
 		
-		accVec = accVec.normalized() * ACC_RATE_OF_CHANGE;
+		accVec = accVec.normalized() * ACC_MAG;
 		
 	# Left
 	if (Input.is_action_pressed("ui_left" + str(PLAYER_NUMBER))):
