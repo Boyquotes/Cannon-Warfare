@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Ship Project"
-run/main_scene="res://rooms/ArenaRoom.tscn"
+run/main_scene="res://rooms/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Music="res://singletons/Music.tscn"
 
 [display]
 
@@ -38,6 +42,9 @@ singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 graphics=false
 graphic=false
 font=false
+window=false
+autoload=false
+aut=false
 
 [importer_defaults]
 
