@@ -26,6 +26,7 @@ animations = [ {
 z_index = -1
 script = ExtResource( 3 )
 damage = 1
+speed = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

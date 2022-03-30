@@ -5,6 +5,7 @@ var velVec = Vector2();
 var hitSomething = false;
 
 export (int) var damage;
+export (float) var speed;
 
 # Called to pass creator ID information
 func init(parentNumber, rot):
@@ -16,6 +17,7 @@ func init(parentNumber, rot):
 	# Set velocity based on own rotation
 	velVec.x = cos(rot)
 	velVec.y = sin(rot)
+	velVec = velVec.normalized() * speed;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
