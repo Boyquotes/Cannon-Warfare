@@ -20,7 +20,7 @@ Player = ExtResource( 1 )
 Rock = ExtResource( 6 )
 WINDOW_DIMENSIONS = Vector2( 900, 900 )
 NUMBER_OF_PLAYERS = 2
-NUMBER_OF_OBSTACLES = 3
+NUMBER_OF_OBSTACLES = 6
 
 [node name="Camera2D" type="Camera2D" parent="RoomManager"]
 current = true
