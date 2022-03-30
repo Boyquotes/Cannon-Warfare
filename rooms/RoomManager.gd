@@ -43,7 +43,7 @@ func _ready():
 	for i in NUMBER_OF_PLAYERS:
 		# Create a random player between the borders, with a random position and rotation
 		var player = Player.instance();
-		player.position = getRandomValidPosition(rng);
+		player.position = getRandomValidPosition(rng, 32);
 		player.rotation = deg2rad(rng.randi_range(0, 360))
 			
 		# Give the player its ID, or Player Number
