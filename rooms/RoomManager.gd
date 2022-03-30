@@ -24,7 +24,7 @@ func _ready():
 	
 	# Set the limits of where we can attempt to spawn obstacles or players (where borders start to appear)
 	horizontalSpawnLimit = rightSideOfScreen - $WallTileMap.get_cell_size().x;
-	verticalSpawnLimit = bottomOfScreen - $CreditsBackground.get_size().y - $WallTileMap.get_cell_size().y;
+	verticalSpawnLimit = bottomOfScreen - $WallTileMap.get_cell_size().y;
 	
 	# Spawn all obstacles
 	var rng = RandomNumberGenerator.new()

@@ -62,9 +62,9 @@ tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 0, 0, 
 
 [node name="BackButton" type="TextureButton" parent="."]
 margin_left = 160.0
-margin_top = 400.0
+margin_top = 376.0
 margin_right = 288.0
-margin_bottom = 448.0
+margin_bottom = 424.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 2 )
 texture_hover = SubResource( 8 )
@@ -87,12 +87,13 @@ __meta__ = {
 }
 
 [node name="ControlsPanel1" type="TextureRect" parent="."]
-margin_left = 25.0
-margin_top = 25.0
-margin_right = 175.0
-margin_bottom = 375.0
+margin_left = 27.0
+margin_top = 16.0
+margin_right = 177.0
+margin_bottom = 366.0
 texture = ExtResource( 3 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -348,12 +349,13 @@ margin_bottom = 97.0
 texture = ExtResource( 7 )
 
 [node name="ControlsPanel2" type="TextureRect" parent="."]
-margin_left = 275.0
-margin_top = 25.0
-margin_right = 425.0
-margin_bottom = 375.0
+margin_left = 277.0
+margin_top = 17.0
+margin_right = 427.0
+margin_bottom = 367.0
 texture = ExtResource( 3 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
