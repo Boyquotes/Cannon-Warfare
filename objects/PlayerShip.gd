@@ -21,6 +21,7 @@ export (float) var CANNON_CHARGE_RATE_OF_CHANGE; # Rate at which the cannon char
 
 # GUI Identifiers
 var cannonChargeBarVerticalBuffer; # How far the charge bar is from the ship, vertically
+var healthBarVerticalBuffer; # How far the health bar is from the ship, vertically
 
 # Declare member variables here.
 export (int) var health; # HP of the player, number set in inspector is starting health
@@ -44,7 +45,12 @@ func _ready():
 	# Initalize the CannonChargeBar
 	$CannonChargeBar.min_value = 0;
 	$CannonChargeBar.max_value = MAX_CANNON_CHARGE;
-	cannonChargeBarVerticalBuffer = 40
+	cannonChargeBarVerticalBuffer = 50;
+	
+	# Initalize the healthbar
+	$HealthBar.min_value = 0;
+	$HealthBar.max_value = health;
+	healthBarVerticalBuffer = 65;
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -62,7 +68,6 @@ func _physics_process(delta):
 	# If cannonCharge is less than zero
 	else:
 		cannonCharge = 0
-	$CannonChargeBar.value = cannonCharge;
 	
 	# Ensure angular velocity doesn't exceed maximum speed
 	if (abs(rotVel) > MAX_ROT_SPEED):
@@ -108,7 +113,7 @@ func _physics_process(delta):
 	dampenVelocity();
 	
 	# GUI Handling
-	manageChargeBar();
+	manageGUIBars();
 	
 # Handles all input. Called every frame in _physics_process
 func getInput():
@@ -183,7 +188,6 @@ func hitByOtherShip(otherVelVec):
 func takeDamage(damageAmount):
 	health -= damageAmount;
 	
-	$ShipHealthBar.frame -= damageAmount;
 	$DamageSound.playing = true;
 	$AnimatedSprite.speed_scale += 1;
 	
@@ -214,11 +218,20 @@ func dampenVelocity():
 	else:
 		velVec.y -= sign(velVec.y) * VEL_DAMP_CONSTANT
 		
-# Ensures the charge bar stays in the correct location relative to the ship. Called every frame
-func manageChargeBar():
-	# Set the relative rotation to the inverse of the ship's rotation, thus canceling each other out
-	$CannonChargeBar.set_rotation(-1*rotation)
-	# Set position to the ship's position, but slightly higher based on the vertical buffer
+# Ensures GUI Bars stay in correct spot and updates them. Called every frame
+func manageGUIBars():
+	# Ensure both bars show the correct progress
+	$CannonChargeBar.value = cannonCharge;
+	$HealthBar.value = health;
+	
+	# Ensure both bars have upright rotation by cancelling out the ship's rotation
+	$CannonChargeBar.set_rotation(-rotation)
+	$HealthBar.set_rotation(-rotation)
+	
+	# Ensure both bars are in the correct position above the ship
 	$CannonChargeBar.set_global_position(Vector2(
 		position.x - ($CannonChargeBar.get_size().x/2), # Position is based on upper left, so subtract half of the width to account for that
 		 position.y - cannonChargeBarVerticalBuffer))
+	$HealthBar.set_global_position(Vector2(
+		position.x - ($HealthBar.get_size().x/2), # Position is based on upper left, so subtract half of the width to account for that
+		 position.y - healthBarVerticalBuffer))

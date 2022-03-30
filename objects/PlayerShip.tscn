@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/sprites/ship2SpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://objects/PlayerShip.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/ship1SpriteSheet.png" type="Texture" id=3]
 [ext_resource path="res://objects/Cannonball.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/GUI/ShipHealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/sprites/healthbarBackground.png" type="Texture" id=5]
 [ext_resource path="res://assets/sounds/shipDamage.wav" type="AudioStream" id=6]
 [ext_resource path="res://assets/sprites/waterParticle.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/chargebarBackground.png" type="Texture" id=8]
@@ -89,6 +89,18 @@ border_color = Color( 0.8, 0.8, 0.8, 0 )
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 64, 10 )
 
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0.458824, 0.14902, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 10 )
+
 [node name="PlayerShip" type="KinematicBody2D"]
 script = ExtResource( 2 )
 Cannonball = ExtResource( 4 )
@@ -136,17 +148,27 @@ texture = ExtResource( 7 )
 
 [node name="BulletHolder" type="Node" parent="."]
 
-[node name="ShipHealthBar" parent="." instance=ExtResource( 5 )]
-position = Vector2( 0, -40 )
-
 [node name="CannonChargeBar" type="ProgressBar" parent="."]
 anchor_right = 0.5
 margin_left = -32.0
-margin_top = -30.0
+margin_top = -29.0
 margin_right = 32.0
-margin_bottom = -21.0
+margin_bottom = -18.0
 custom_styles/fg = SubResource( 15 )
 custom_styles/bg = SubResource( 14 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -32.0
+margin_top = -42.0
+margin_right = 32.0
+margin_bottom = -31.0
+custom_styles/fg = SubResource( 16 )
+custom_styles/bg = SubResource( 17 )
+max_value = 3.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
