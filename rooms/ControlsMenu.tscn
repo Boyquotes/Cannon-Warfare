@@ -1,0 +1,573 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://tilemaps/WaterTileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/sprites/buttonPressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/buttonHover.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/buttonDefault.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/Vidaloka-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://rooms/ControlsMenu.gd" type="Script" id=6]
+[ext_resource path="res://assets/sprites/ship1Illustration.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/controlsPanel.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/ship2Illustration.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+resource_local_to_scene = true
+size = 15
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+resource_local_to_scene = true
+size = 12
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+resource_local_to_scene = true
+size = 10
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=5]
+resource_local_to_scene = true
+size = 10
+outline_size = 1
+font_data = ExtResource( 5 )
+
+[node name="ControlsMenu" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.499, 0.57 )
+limit_left = 0
+limit_top = 0
+
+[node name="WaterBackground" parent="." instance=ExtResource( 1 )]
+z_index = -10
+tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 0, 0, 6, 0, 0, 7, 2, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 12, 2, 0, 13, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 2, 0, 65539, 2, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 2, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 2, 0, 131072, 2, 0, 131073, 0, 0, 131074, 2, 0, 131075, 2, 0, 131076, 2, 0, 131077, 2, 0, 131078, 0, 0, 131079, 2, 0, 131080, 2, 0, 131081, 0, 0, 131082, 1, 0, 131083, 1, 0, 131084, 0, 0, 131085, 2, 0, 196608, 2, 0, 196609, 0, 0, 196610, 0, 0, 196611, 2, 0, 196612, 0, 0, 196613, 0, 0, 196614, 2, 0, 196615, 2, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 2, 0, 196620, 0, 0, 196621, 2, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 2, 0, 262148, 0, 0, 262149, 0, 0, 262150, 2, 0, 262151, 0, 0, 262152, 1, 0, 262153, 2, 0, 262154, 0, 0, 262155, 0, 0, 262156, 2, 0, 262157, 0, 0, 327680, 0, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 0, 0, 327685, 2, 0, 327686, 1, 0, 327687, 2, 0, 327688, 0, 0, 327689, 2, 0, 327690, 0, 0, 327691, 0, 0, 327692, 2, 0, 327693, 2, 0, 393216, 0, 0, 393217, 2, 0, 393218, 0, 0, 393219, 2, 0, 393220, 0, 0, 393221, 1, 0, 393222, 1, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 2, 0, 393229, 2, 0, 458752, 2, 0, 458753, 2, 0, 458754, 1, 0, 458755, 2, 0, 458756, 0, 0, 458757, 0, 0, 458758, 2, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 2, 0, 458763, 0, 0, 458764, 2, 0, 458765, 0, 0, 524288, 2, 0, 524289, 2, 0, 524290, 2, 0, 524291, 0, 0, 524292, 2, 0, 524293, 0, 0, 524294, 2, 0, 524295, 0, 0, 524296, 2, 0, 524297, 0, 0, 524298, 2, 0, 524299, 0, 0, 524300, 0, 0, 524301, 2, 0, 589824, 2, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 2, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 2, 0, 589835, 0, 0, 589836, 0, 0, 589837, 2, 0, 655360, 2, 0, 655361, 2, 0, 655362, 2, 0, 655363, 2, 0, 655364, 0, 0, 655365, 2, 0, 655366, 0, 0, 655367, 0, 0, 655368, 2, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 2, 0, 720896, 0, 0, 720897, 2, 0, 720898, 0, 0, 720899, 2, 0, 720900, 2, 0, 720901, 0, 0, 720902, 2, 0, 720903, 2, 0, 720904, 2, 0, 720905, 2, 0, 720906, 2, 0, 720907, 0, 0, 720908, 2, 0, 720909, 2, 0, 786432, 0, 0, 786433, 2, 0, 786434, 0, 0, 786435, 0, 0, 786436, 2, 0, 786437, 2, 0, 786438, 0, 0, 786439, 2, 0, 786440, 2, 0, 786441, 2, 0, 786442, 0, 0, 786443, 0, 0, 786444, 2, 0, 786445, 2, 0, 851968, 0, 0, 851969, 2, 0, 851970, 0, 0, 851971, 0, 0, 851972, 2, 0, 851973, 2, 0, 851974, 0, 0, 851975, 2, 0, 851976, 2, 0, 851977, 2, 0, 851978, 2, 0, 851979, 0, 0, 851980, 2, 0, 851981, 2, 0, 917504, 2, 0, 917505, 1, 0, 917506, 1, 0, 917507, 2, 0, 917508, 1, 0, 917509, 1, 0, 917510, 2, 0, 917511, 0, 0, 917512, 1, 0, 917513, 2, 0, 917514, 0, 0, 917515, 0, 0, 917516, 2, 0, 917517, 2, 0, 983040, 1, 0, 983041, 2, 0, 983042, 1, 0, 983043, 2, 0, 983044, 2, 0, 983045, 1, 0, 983046, 2, 0, 983047, 0, 0, 983048, 1, 0, 983049, 2, 0, 983050, 1, 0, 983051, 2, 0, 983052, 2, 0, 983053, 1, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 2, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 0, 0, 1048587, 2, 0, 1048588, 0, 0, 1048589, 1, 0 )
+
+[node name="BackButton" type="TextureButton" parent="."]
+margin_left = 160.0
+margin_top = 400.0
+margin_right = 288.0
+margin_bottom = 448.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="BackButton"]
+margin_right = 128.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "BACK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsPanel1" type="TextureRect" parent="."]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 175.0
+margin_bottom = 375.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ForwardPanel" type="TextureRect" parent="ControlsPanel1"]
+margin_left = 10.0
+margin_top = 105.0
+margin_right = 85.0
+margin_bottom = 131.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/ForwardPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "FORWARD"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel1/ForwardPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/ForwardPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "UP-KEY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackPanel" type="TextureRect" parent="ControlsPanel1"]
+margin_left = 10.0
+margin_top = 135.0
+margin_right = 85.0
+margin_bottom = 161.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="ControlsPanel1/BackPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "BACK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel1/BackPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/BackPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "DOWN-KEY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftPanel" type="TextureRect" parent="ControlsPanel1"]
+margin_left = 10.0
+margin_top = 165.0
+margin_right = 85.0
+margin_bottom = 191.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="ControlsPanel1/LeftPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "LEFT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel1/LeftPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/LeftPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "LEFT-KEY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightPanel" type="TextureRect" parent="ControlsPanel1"]
+margin_left = 10.0
+margin_top = 195.0
+margin_right = 85.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 290, -215 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/RightPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "RIGHT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel1/RightPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/RightPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "RIGHT-KEY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShootPanel" type="TextureRect" parent="ControlsPanel1"]
+margin_left = 10.0
+margin_top = 225.0
+margin_right = 85.0
+margin_bottom = 251.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/ShootPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "CHARGE SHOT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel1/ShootPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel1/ShootPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "CTRL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipIllustration" type="TextureRect" parent="ControlsPanel1"]
+margin_left = 60.0
+margin_top = 33.0
+margin_right = 92.0
+margin_bottom = 97.0
+texture = ExtResource( 7 )
+
+[node name="ControlsPanel2" type="TextureRect" parent="."]
+margin_left = 275.0
+margin_top = 25.0
+margin_right = 425.0
+margin_bottom = 375.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ForwardPanel" type="TextureRect" parent="ControlsPanel2"]
+margin_left = 10.0
+margin_top = 105.0
+margin_right = 85.0
+margin_bottom = 131.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/ForwardPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "FORWARD"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel2/ForwardPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/ForwardPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "W"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackPanel" type="TextureRect" parent="ControlsPanel2"]
+margin_left = 10.0
+margin_top = 135.0
+margin_right = 85.0
+margin_bottom = 161.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="ControlsPanel2/BackPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "BACK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel2/BackPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/BackPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "S"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftPanel" type="TextureRect" parent="ControlsPanel2"]
+margin_left = 10.0
+margin_top = 165.0
+margin_right = 85.0
+margin_bottom = 191.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="ControlsPanel2/LeftPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "LEFT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel2/LeftPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/LeftPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightPanel" type="TextureRect" parent="ControlsPanel2"]
+margin_left = 10.0
+margin_top = 195.0
+margin_right = 85.0
+margin_bottom = 221.0
+rect_pivot_offset = Vector2( 290, -215 )
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/RightPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "RIGHT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel2/RightPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/RightPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "D"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShootPanel" type="TextureRect" parent="ControlsPanel2"]
+margin_left = 10.0
+margin_top = 225.0
+margin_right = 85.0
+margin_bottom = 251.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/ShootPanel"]
+margin_right = 75.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "CHARGE SHOT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonPanel" type="TextureRect" parent="ControlsPanel2/ShootPanel"]
+margin_left = 80.0
+margin_right = 135.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ControlsPanel2/ShootPanel/ButtonPanel"]
+margin_right = 55.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.458824, 0.431373, 0.431373, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "SHIFT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShipIllustration" type="TextureRect" parent="ControlsPanel2"]
+margin_left = 60.0
+margin_top = 33.0
+margin_right = 92.0
+margin_bottom = 97.0
+texture = ExtResource( 9 )

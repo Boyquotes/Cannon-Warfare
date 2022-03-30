@@ -4,11 +4,16 @@ extends Node
 func _ready():
 	# Connect button signals
 	$PlayButton.connect("button_up", self, "_on_PlayButton_button_up")
+	$ControlsButton.connect("button_up", self, "_on_ControlsButton_button_up")
 	$QuitButton.connect("button_up", self, "_on_QuitButton_button_up")
 
 # Called when the PlayButton is pressed
 func _on_PlayButton_button_up():
 	get_tree().change_scene("res://rooms/ArenaRoom.tscn")
+	
+# Called when the ControlsButton is pressed
+func _on_ControlsButton_button_up():
+	get_tree().change_scene("res://rooms/ControlsMenu.tscn")
 	
 # Called when the QuitButton is pressed
 func _on_QuitButton_button_up():
