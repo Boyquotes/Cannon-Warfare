@@ -56,7 +56,17 @@ func _ready():
 func _physics_process(delta):
 	# Kill player if health reaches 0
 	if (health <= 0):
-		queue_free()
+		# Set self to invisible
+		self.hide()
+		
+		 # Disable collision
+		$Hitbox.set_deferred("disabled", true);
+		
+		# Set health to a high value, so we don't enter this block more than once
+		health = 20;
+		
+		$RestartTimer.start();
+	
 	
 	# Reset vectors and get input
 	accVec = Vector2();
@@ -235,3 +245,7 @@ func manageGUIBars():
 	$HealthBar.set_global_position(Vector2(
 		position.x - ($HealthBar.get_size().x/2), # Position is based on upper left, so subtract half of the width to account for that
 		 position.y - healthBarVerticalBuffer))
+
+# Sends back to main menu. Called when the restart timer, which starts when the player dies, ends
+func _on_RestartTimer_timeout():
+	get_tree().change_scene("res://rooms/MainMenu.tscn")
