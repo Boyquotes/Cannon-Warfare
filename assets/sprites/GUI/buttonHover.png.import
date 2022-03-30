@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/buttonPressed.png-c77e3cc11dec51a8e206411c8076a805.stex"
+path="res://.import/buttonHover.png-20afe3467864773ae0c526d42bc44f0d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttonPressed.png"
-dest_files=[ "res://.import/buttonPressed.png-c77e3cc11dec51a8e206411c8076a805.stex" ]
+source_file="res://assets/sprites/GUI/buttonHover.png"
+dest_files=[ "res://.import/buttonHover.png-20afe3467864773ae0c526d42bc44f0d.stex" ]
 
 [params]
 

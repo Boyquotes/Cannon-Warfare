@@ -1,14 +1,16 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://tilemaps/WaterTileMap.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/sprites/buttonPressed.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/buttonHover.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/buttonDefault.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/GUI/buttonPressed.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/GUI/controlsPanel.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/GUI/buttonDefault.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Vidaloka-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://rooms/ControlsMenu.gd" type="Script" id=6]
-[ext_resource path="res://assets/sprites/ship1Illustration.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/controlsPanel.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/ship2Illustration.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/GUI/ship1Illustration.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/GUI/ship2Illustration.png" type="Texture" id=9]
+
+[sub_resource type="StreamTexture" id=8]
+load_path = "res://.import/buttonHover.png-266c9b21b1e012c6869ac102b53cb3a1.stex"
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -59,7 +61,7 @@ margin_right = 288.0
 margin_bottom = 448.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 2 )
-texture_hover = ExtResource( 3 )
+texture_hover = SubResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -83,7 +85,7 @@ margin_left = 25.0
 margin_top = 25.0
 margin_right = 175.0
 margin_bottom = 375.0
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -330,7 +332,7 @@ margin_left = 275.0
 margin_top = 25.0
 margin_right = 425.0
 margin_bottom = 375.0
-texture = ExtResource( 8 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

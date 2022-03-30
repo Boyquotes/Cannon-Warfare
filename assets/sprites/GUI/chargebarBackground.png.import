@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthSpriteSheet.png-505ee576d92ef0713cbf363f46f25d61.stex"
+path="res://.import/chargebarBackground.png-995d02f1aded41f5ff1f1f5ccff7e246.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/healthSpriteSheet.png"
-dest_files=[ "res://.import/healthSpriteSheet.png-505ee576d92ef0713cbf363f46f25d61.stex" ]
+source_file="res://assets/sprites/GUI/chargebarBackground.png"
+dest_files=[ "res://.import/chargebarBackground.png-995d02f1aded41f5ff1f1f5ccff7e246.stex" ]
 
 [params]
 

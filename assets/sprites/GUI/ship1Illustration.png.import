@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthbarBackground.png-497a7f76804107d8934bf86c8ace53ce.stex"
+path="res://.import/ship1Illustration.png-98a08970eba18a4389dc6ba2f8bf020d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/healthbarBackground.png"
-dest_files=[ "res://.import/healthbarBackground.png-497a7f76804107d8934bf86c8ace53ce.stex" ]
+source_file="res://assets/sprites/GUI/ship1Illustration.png"
+dest_files=[ "res://.import/ship1Illustration.png-98a08970eba18a4389dc6ba2f8bf020d.stex" ]
 
 [params]
 

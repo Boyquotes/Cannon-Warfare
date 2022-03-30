@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/controlsPanel.png-418955bf1b087cc09fbc9527631b173c.stex"
+path="res://.import/ship2Illustration.png-2f13dd36cc74813bac95aa3e86f66ba3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/controlsPanel.png"
-dest_files=[ "res://.import/controlsPanel.png-418955bf1b087cc09fbc9527631b173c.stex" ]
+source_file="res://assets/sprites/GUI/ship2Illustration.png"
+dest_files=[ "res://.import/ship2Illustration.png-2f13dd36cc74813bac95aa3e86f66ba3.stex" ]
 
 [params]
 

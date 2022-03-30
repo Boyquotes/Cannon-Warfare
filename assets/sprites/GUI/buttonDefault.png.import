@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chargebarBackground.png-453dbfed0c1dad8b73daf57631526d8b.stex"
+path="res://.import/buttonDefault.png-c3fbe100379de01cefa7a6db16dbd87d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/chargebarBackground.png"
-dest_files=[ "res://.import/chargebarBackground.png-453dbfed0c1dad8b73daf57631526d8b.stex" ]
+source_file="res://assets/sprites/GUI/buttonDefault.png"
+dest_files=[ "res://.import/buttonDefault.png-c3fbe100379de01cefa7a6db16dbd87d.stex" ]
 
 [params]
 

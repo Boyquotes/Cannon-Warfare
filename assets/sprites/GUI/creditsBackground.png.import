@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ship1Illustration.png-583e81d02e7994e1a69d432a79a17564.stex"
+path="res://.import/creditsBackground.png-1bd20b60036839866db227239cfa8ec9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/ship1Illustration.png"
-dest_files=[ "res://.import/ship1Illustration.png-583e81d02e7994e1a69d432a79a17564.stex" ]
+source_file="res://assets/sprites/GUI/creditsBackground.png"
+dest_files=[ "res://.import/creditsBackground.png-1bd20b60036839866db227239cfa8ec9.stex" ]
 
 [params]
 
