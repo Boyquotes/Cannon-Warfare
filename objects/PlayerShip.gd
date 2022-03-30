@@ -7,7 +7,7 @@ export (PackedScene) var Cannonball
 export (float) var ROT_DAMP_CONSTANT; # Dampening constant of the rotation
 export (float) var ROT_ACC; # Angular Acceleration
 export (float) var VEL_DAMP_CONSTANT; # Dampening constant of the linear velocity
-export (int) var MAX_ROT_SPEED; # Maximum rotation speed
+export (float) var MAX_ROT_SPEED; # Maximum rotation speed
 export (float) var ACC_MAG; # Magnitude of accleration vector
 export (int) var MAX_SPEED; # Maximum linear speed
 export (float) var KNOCKBACK_MULTIPLIER; # Multiplier for the knockback vector. Must be greater than 1 to offset the velocity before the collision
