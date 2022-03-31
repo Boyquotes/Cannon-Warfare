@@ -216,17 +216,11 @@ func dampenVelocity():
 	if (Input.is_action_pressed("ui_up" + str(PLAYER_NUMBER))):
 		return;
 	
-	# If making VelVec's x approach zero by the VEL_DAMP_CONSTANT would make it switch signs, then just set it to zero
-	if (abs(velVec.x - VEL_DAMP_CONSTANT) < VEL_DAMP_CONSTANT):
+	# If making VelVec's magnitude approach zero by the VEL_DAMP_CONSTANT would make it switch signs, then just set it to zero
+	if (abs(velVec.length() - VEL_DAMP_CONSTANT) < VEL_DAMP_CONSTANT):
 		velVec.x = 0;
 	else:
-		velVec.x -= sign(velVec.x) * VEL_DAMP_CONSTANT
-		
-	# If making VelVec's y approach zero by the VEL_DAMP_CONSTANT would make it switch signs, then just set it to zero
-	if (abs(velVec.y - VEL_DAMP_CONSTANT) < VEL_DAMP_CONSTANT):
-		velVec.y = 0;
-	else:
-		velVec.y -= sign(velVec.y) * VEL_DAMP_CONSTANT
+		velVec = velVec.normalized() * (velVec.length() - VEL_DAMP_CONSTANT)
 		
 # Ensures GUI Bars stay in correct spot and updates them. Called every frame
 func manageGUIBars():
