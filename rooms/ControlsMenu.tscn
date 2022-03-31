@@ -7,10 +7,8 @@
 [ext_resource path="res://assets/fonts/Vidaloka-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://rooms/ControlsMenu.gd" type="Script" id=6]
 [ext_resource path="res://assets/sprites/GUI/ship1Illustration.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/GUI/buttonHover.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/GUI/ship2Illustration.png" type="Texture" id=9]
-
-[sub_resource type="StreamTexture" id=8]
-load_path = "res://.import/buttonHover.png-266c9b21b1e012c6869ac102b53cb3a1.stex"
 
 [sub_resource type="DynamicFont" id=1]
 size = 36
@@ -67,7 +65,7 @@ margin_right = 288.0
 margin_bottom = 424.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 2 )
-texture_hover = SubResource( 8 )
+texture_hover = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
