@@ -21,8 +21,7 @@ func init(parentNumber, rot):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x += velVec.x;
-	position.y += velVec.y;
+	position += velVec * delta
 	# If we've hit something, and the sound is done playing, then destroy self
 	if (hitSomething):
 		if ($HitSound.playing == false):
