@@ -33,6 +33,10 @@ Music="res://singletons/Music.tscn"
 
 window/size/width=900
 window/size/height=900
+window/size/borderless=true
+window/size/fullscreen=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [gdnative]
 
@@ -110,7 +114,7 @@ ui_shoot1={
 }
 ui_shoot2={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777237,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 ui_down1={
