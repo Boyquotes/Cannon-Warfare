@@ -172,6 +172,11 @@ func getInput():
 		if (cannonCharge >= MAX_CANNON_CHARGE):
 			shoot();
 			cannonCharge = 0;
+			
+	## Other
+	# Quits to main menu
+	if (Input.is_action_just_pressed("ui_quit")): # Q and Escape
+		get_tree().change_scene("res://rooms/MainMenu.tscn");
 		
 func shoot():
 	# Create first cannonball (aiming left), give position and angle
